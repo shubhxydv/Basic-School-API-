@@ -1,0 +1,356 @@
+{
+  "info": {
+    "name": "School Management API",
+    "description": "API collection for School Management System with location-based sorting",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        },
+        "description": "Check if the API server is running properly"
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n    \"success\": true,\n    \"message\": \"School Management API is running\",\n    \"timestamp\": \"2024-01-01T12:00:00.000Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Add School",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Springfield Elementary School\",\n    \"address\": \"123 Education Drive, Springfield, IL 62701\",\n    \"latitude\": 39.7817,\n    \"longitude\": -89.6501\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        },
+        "description": "Add a new school to the database with location coordinates"
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Springfield Elementary School\",\n    \"address\": \"123 Education Drive, Springfield, IL 62701\",\n    \"latitude\": 39.7817,\n    \"longitude\": -89.6501\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/addSchool",
+              "host": ["{{baseUrl}}"],
+              "path": ["addSchool"]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n    \"success\": true,\n    \"message\": \"School added successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Springfield Elementary School\",\n        \"address\": \"123 Education Drive, Springfield, IL 62701\",\n        \"latitude\": 39.7817,\n        \"longitude\": -89.6501\n    }\n}"
+        },
+        {
+          "name": "Validation Error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"\",\n    \"address\": \"123 Education Drive\",\n    \"latitude\": 39.7817,\n    \"longitude\": -89.6501\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/addSchool",
+              "host": ["{{baseUrl}}"],
+              "path": ["addSchool"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n    \"success\": false,\n    \"message\": \"Name must be a non-empty string\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Add School - Sample Data 1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Central High School\",\n    \"address\": \"456 Main Street, Downtown, NY 10001\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.0060\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        },
+        "description": "Add Central High School (New York coordinates)"
+      }
+    },
+    {
+      "name": "Add School - Sample Data 2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Westside Academy\",\n    \"address\": \"789 Oak Avenue, Los Angeles, CA 90210\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        },
+        "description": "Add Westside Academy (Los Angeles coordinates)"
+      }
+    },
+    {
+      "name": "List Schools - From New York",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=40.7589&longitude=-73.9851",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "40.7589",
+              "description": "User's latitude (Times Square, NYC)"
+            },
+            {
+              "key": "longitude",
+              "value": "-73.9851",
+              "description": "User's longitude (Times Square, NYC)"
+            }
+          ]
+        },
+        "description": "Get schools sorted by distance from Times Square, New York"
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/listSchools?latitude=40.7589&longitude=-73.9851",
+              "host": ["{{baseUrl}}"],
+              "path": ["listSchools"],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "40.7589"
+                },
+                {
+                  "key": "longitude",
+                  "value": "-73.9851"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Schools fetched and sorted by proximity\",\n    \"user_location\": {\n        \"latitude\": 40.7589,\n        \"longitude\": -73.9851\n    },\n    \"count\": 3,\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Central High School\",\n            \"address\": \"456 Main Street, Downtown, NY 10001\",\n            \"latitude\": 40.7128,\n            \"longitude\": -74.006,\n            \"distance_km\": 5.12\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Springfield Elementary School\",\n            \"address\": \"123 Education Drive, Springfield, IL 62701\",\n            \"latitude\": 39.7817,\n            \"longitude\": -89.6501,\n            \"distance_km\": 1285.67\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Westside Academy\",\n            \"address\": \"789 Oak Avenue, Los Angeles, CA 90210\",\n            \"latitude\": 34.0522,\n            \"longitude\": -118.2437,\n            \"distance_km\": 3944.42\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "List Schools - From Chicago",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=41.8781&longitude=-87.6298",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "41.8781",
+              "description": "User's latitude (Chicago, IL)"
+            },
+            {
+              "key": "longitude",
+              "value": "-87.6298",
+              "description": "User's longitude (Chicago, IL)"
+            }
+          ]
+        },
+        "description": "Get schools sorted by distance from Chicago, Illinois"
+      }
+    },
+    {
+      "name": "List Schools - Invalid Parameters",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=invalid&longitude=-87.6298",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "invalid",
+              "description": "Invalid latitude to test error handling"
+            },
+            {
+              "key": "longitude",
+              "value": "-87.6298"
+            }
+          ]
+        },
+        "description": "Test error handling with invalid latitude parameter"
+      },
+      "response": [
+        {
+          "name": "Validation Error",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/listSchools?latitude=invalid&longitude=-87.6298",
+              "host": ["{{baseUrl}}"],
+              "path": ["listSchools"],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "invalid"
+                },
+                {
+                  "key": "longitude",
+                  "value": "-87.6298"
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n    \"success\": false,\n    \"message\": \"User latitude must be a number between -90 and 90\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "List Schools - Missing Parameters",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"]
+        },
+        "description": "Test error handling when required parameters are missing"
+      },
+      "response": [
+        {
+          "name": "Missing Parameters Error",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/listSchools",
+              "host": ["{{baseUrl}}"],
+              "path": ["listSchools"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n    \"success\": false,\n    \"message\": \"User latitude and longitude are required as query parameters\"\n}"
+        }
+      ]
+    }
+  ]
+}
