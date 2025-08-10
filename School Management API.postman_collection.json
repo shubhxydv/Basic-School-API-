@@ -1,19 +1,22 @@
 {
   "info": {
-    "name": "School Management API",
-    "description": "API collection for School Management System with location-based sorting",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "name": "School Management API - Production",
+    "description": "Complete API collection for School Management System with real educational institutions and location-based sorting functionality. Deploy URL: https://basic-school-api-production-24e4.up.railway.app",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "school-mgmt-api-prod",
+    "version": "1.0.0"
   },
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:3000",
-      "type": "string"
+      "value": "https://basic-school-api-production-24e4.up.railway.app",
+      "type": "string",
+      "description": "Production API base URL"
     }
   ],
   "item": [
     {
-      "name": "Health Check",
+      "name": "🏥 Health Check",
       "request": {
         "method": "GET",
         "header": [],
@@ -22,11 +25,11 @@
           "host": ["{{baseUrl}}"],
           "path": ["health"]
         },
-        "description": "Check if the API server is running properly"
+        "description": "Check if the production API server is running properly"
       },
       "response": [
         {
-          "name": "Success Response",
+          "name": "✅ Success Response",
           "originalRequest": {
             "method": "GET",
             "header": [],
@@ -49,7 +52,7 @@
       ]
     },
     {
-      "name": "Add School",
+      "name": "🏫 Add School - SRM KTR",
       "request": {
         "method": "POST",
         "header": [
@@ -60,18 +63,18 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"name\": \"Springfield Elementary School\",\n    \"address\": \"123 Education Drive, Springfield, IL 62701\",\n    \"latitude\": 39.7817,\n    \"longitude\": -89.6501\n}"
+          "raw": "{\n    \"name\": \"SRM Institute of Science and Technology\",\n    \"address\": \"SRM Nagar, Kattankulathur, Chengalpattu District, Tamil Nadu 603203\",\n    \"latitude\": 12.9853,\n    \"longitude\": 79.9698\n}"
         },
         "url": {
           "raw": "{{baseUrl}}/addSchool",
           "host": ["{{baseUrl}}"],
           "path": ["addSchool"]
         },
-        "description": "Add a new school to the database with location coordinates"
+        "description": "Add SRM Institute of Science and Technology (KTR Campus) with actual coordinates"
       },
       "response": [
         {
-          "name": "Success Response",
+          "name": "✅ Success Response",
           "originalRequest": {
             "method": "POST",
             "header": [
@@ -82,7 +85,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"Springfield Elementary School\",\n    \"address\": \"123 Education Drive, Springfield, IL 62701\",\n    \"latitude\": 39.7817,\n    \"longitude\": -89.6501\n}"
+              "raw": "{\n    \"name\": \"SRM Institute of Science and Technology\",\n    \"address\": \"SRM Nagar, Kattankulathur, Chengalpattu District, Tamil Nadu 603203\",\n    \"latitude\": 12.9853,\n    \"longitude\": 79.9698\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/addSchool",
@@ -98,10 +101,324 @@
               "value": "application/json"
             }
           ],
-          "body": "{\n    \"success\": true,\n    \"message\": \"School added successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Springfield Elementary School\",\n        \"address\": \"123 Education Drive, Springfield, IL 62701\",\n        \"latitude\": 39.7817,\n        \"longitude\": -89.6501\n    }\n}"
+          "body": "{\n    \"success\": true,\n    \"message\": \"School added successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"SRM Institute of Science and Technology\",\n        \"address\": \"SRM Nagar, Kattankulathur, Chengalpattu District, Tamil Nadu 603203\",\n        \"latitude\": 12.9853,\n        \"longitude\": 79.9698\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "🏫 Add School - VIT Vellore",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Vellore Institute of Technology\",\n    \"address\": \"Tiruvalam Rd, Katpadi, Vellore, Tamil Nadu 632014\",\n    \"latitude\": 12.9692,\n    \"longitude\": 79.1559\n}"
         },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        },
+        "description": "Add Vellore Institute of Technology (Main Campus) with actual coordinates"
+      }
+    },
+    {
+      "name": "🏫 Add School - VIT Chennai",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"VIT Chennai Campus\",\n    \"address\": \"Kelambakkam - Vandalur Rd, Rajan Nagar, Chennai, Tamil Nadu 600127\",\n    \"latitude\": 12.9721,\n    \"longitude\": 80.0434\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        },
+        "description": "Add VIT Chennai Campus with actual coordinates"
+      }
+    },
+    {
+      "name": "🏫 Add School - Delhi University",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"University of Delhi\",\n    \"address\": \"University Enclave, GTB Nagar, Delhi 110007\",\n    \"latitude\": 28.5843,\n    \"longitude\": 77.1630\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        },
+        "description": "Add University of Delhi with actual coordinates"
+      }
+    },
+    {
+      "name": "🏫 Add School - IIT Chennai",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Indian Institute of Technology Madras\",\n    \"address\": \"IIT P.O, Chennai, Tamil Nadu 600036\",\n    \"latitude\": 12.9915,\n    \"longitude\": 80.2337\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        },
+        "description": "Add IIT Madras with actual coordinates"
+      }
+    },
+    {
+      "name": "🏫 Add School - Anna University",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Anna University\",\n    \"address\": \"Sardar Patel Rd, Guindy, Chennai, Tamil Nadu 600025\",\n    \"latitude\": 13.0067,\n    \"longitude\": 80.2206\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        },
+        "description": "Add Anna University Chennai with actual coordinates"
+      }
+    },
+    {
+      "name": "🏫 Add School - BITS Pilani",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Birla Institute of Technology and Science\",\n    \"address\": \"BITS Pilani, Pilani, Rajasthan 333031\",\n    \"latitude\": 28.3670,\n    \"longitude\": 75.5869\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        },
+        "description": "Add BITS Pilani with actual coordinates"
+      }
+    },
+    {
+      "name": "📍 List Schools - From Chennai City Center",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=13.0827&longitude=80.2707",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "13.0827",
+              "description": "Chennai City Center latitude"
+            },
+            {
+              "key": "longitude",
+              "value": "80.2707",
+              "description": "Chennai City Center longitude"
+            }
+          ]
+        },
+        "description": "Get schools sorted by distance from Chennai city center (Marina Beach area)"
+      },
+      "response": [
         {
-          "name": "Validation Error",
+          "name": "✅ Success Response - Chennai Center",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/listSchools?latitude=13.0827&longitude=80.2707",
+              "host": ["{{baseUrl}}"],
+              "path": ["listSchools"],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "13.0827"
+                },
+                {
+                  "key": "longitude",
+                  "value": "80.2707"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Schools fetched and sorted by proximity\",\n    \"user_location\": {\n        \"latitude\": 13.0827,\n        \"longitude\": 80.2707\n    },\n    \"count\": 6,\n    \"data\": [\n        {\n            \"id\": 5,\n            \"name\": \"Anna University\",\n            \"address\": \"Sardar Patel Rd, Guindy, Chennai, Tamil Nadu 600025\",\n            \"latitude\": 13.0067,\n            \"longitude\": 80.2206,\n            \"distance_km\": 9.2\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Indian Institute of Technology Madras\",\n            \"address\": \"IIT P.O, Chennai, Tamil Nadu 600036\",\n            \"latitude\": 12.9915,\n            \"longitude\": 80.2337,\n            \"distance_km\": 10.1\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "📍 List Schools - From Delhi",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=28.6139&longitude=77.2090",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "28.6139",
+              "description": "New Delhi latitude (India Gate area)"
+            },
+            {
+              "key": "longitude",
+              "value": "77.2090",
+              "description": "New Delhi longitude (India Gate area)"
+            }
+          ]
+        },
+        "description": "Get schools sorted by distance from New Delhi (India Gate area)"
+      }
+    },
+    {
+      "name": "📍 List Schools - From Mumbai",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=19.0760&longitude=72.8777",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "19.0760",
+              "description": "Mumbai city center latitude"
+            },
+            {
+              "key": "longitude",
+              "value": "72.8777",
+              "description": "Mumbai city center longitude"
+            }
+          ]
+        },
+        "description": "Get schools sorted by distance from Mumbai city center"
+      }
+    },
+    {
+      "name": "📍 List Schools - From Bangalore",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=12.9716&longitude=77.5946",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "12.9716",
+              "description": "Bangalore city center latitude"
+            },
+            {
+              "key": "longitude",
+              "value": "77.5946",
+              "description": "Bangalore city center longitude"
+            }
+          ]
+        },
+        "description": "Get schools sorted by distance from Bangalore city center"
+      }
+    },
+    {
+      "name": "📍 List Schools - From Chengalpattu (Your Area)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=12.6919&longitude=79.9755",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "12.6919",
+              "description": "Chengalpattu, Tamil Nadu latitude"
+            },
+            {
+              "key": "longitude",
+              "value": "79.9755",
+              "description": "Chengalpattu, Tamil Nadu longitude"
+            }
+          ]
+        },
+        "description": "Get schools sorted by distance from Chengalpattu area (near SRM)"
+      }
+    },
+    {
+      "name": "❌ Validation Error Test - Empty Name",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"\",\n    \"address\": \"Test Address\",\n    \"latitude\": 12.9853,\n    \"longitude\": 79.9698\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        },
+        "description": "Test validation - empty school name should return error"
+      },
+      "response": [
+        {
+          "name": "❌ Validation Error",
           "originalRequest": {
             "method": "POST",
             "header": [
@@ -112,7 +429,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"\",\n    \"address\": \"123 Education Drive\",\n    \"latitude\": 39.7817,\n    \"longitude\": -89.6501\n}"
+              "raw": "{\n    \"name\": \"\",\n    \"address\": \"Test Address\",\n    \"latitude\": 12.9853,\n    \"longitude\": 79.9698\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/addSchool",
@@ -133,7 +450,7 @@
       ]
     },
     {
-      "name": "Add School - Sample Data 1",
+      "name": "❌ Validation Error Test - Invalid Coordinates",
       "request": {
         "method": "POST",
         "header": [
@@ -144,128 +461,23 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"name\": \"Central High School\",\n    \"address\": \"456 Main Street, Downtown, NY 10001\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.0060\n}"
+          "raw": "{\n    \"name\": \"Test School\",\n    \"address\": \"Test Address\",\n    \"latitude\": 95.0,\n    \"longitude\": 200.0\n}"
         },
         "url": {
           "raw": "{{baseUrl}}/addSchool",
           "host": ["{{baseUrl}}"],
           "path": ["addSchool"]
         },
-        "description": "Add Central High School (New York coordinates)"
+        "description": "Test validation - invalid coordinates (latitude > 90, longitude > 180)"
       }
     },
     {
-      "name": "Add School - Sample Data 2",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"name\": \"Westside Academy\",\n    \"address\": \"789 Oak Avenue, Los Angeles, CA 90210\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437\n}"
-        },
-        "url": {
-          "raw": "{{baseUrl}}/addSchool",
-          "host": ["{{baseUrl}}"],
-          "path": ["addSchool"]
-        },
-        "description": "Add Westside Academy (Los Angeles coordinates)"
-      }
-    },
-    {
-      "name": "List Schools - From New York",
+      "name": "❌ List Schools - Invalid Latitude",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/listSchools?latitude=40.7589&longitude=-73.9851",
-          "host": ["{{baseUrl}}"],
-          "path": ["listSchools"],
-          "query": [
-            {
-              "key": "latitude",
-              "value": "40.7589",
-              "description": "User's latitude (Times Square, NYC)"
-            },
-            {
-              "key": "longitude",
-              "value": "-73.9851",
-              "description": "User's longitude (Times Square, NYC)"
-            }
-          ]
-        },
-        "description": "Get schools sorted by distance from Times Square, New York"
-      },
-      "response": [
-        {
-          "name": "Success Response",
-          "originalRequest": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/listSchools?latitude=40.7589&longitude=-73.9851",
-              "host": ["{{baseUrl}}"],
-              "path": ["listSchools"],
-              "query": [
-                {
-                  "key": "latitude",
-                  "value": "40.7589"
-                },
-                {
-                  "key": "longitude",
-                  "value": "-73.9851"
-                }
-              ]
-            }
-          },
-          "status": "OK",
-          "code": 200,
-          "header": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "body": "{\n    \"success\": true,\n    \"message\": \"Schools fetched and sorted by proximity\",\n    \"user_location\": {\n        \"latitude\": 40.7589,\n        \"longitude\": -73.9851\n    },\n    \"count\": 3,\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Central High School\",\n            \"address\": \"456 Main Street, Downtown, NY 10001\",\n            \"latitude\": 40.7128,\n            \"longitude\": -74.006,\n            \"distance_km\": 5.12\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Springfield Elementary School\",\n            \"address\": \"123 Education Drive, Springfield, IL 62701\",\n            \"latitude\": 39.7817,\n            \"longitude\": -89.6501,\n            \"distance_km\": 1285.67\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Westside Academy\",\n            \"address\": \"789 Oak Avenue, Los Angeles, CA 90210\",\n            \"latitude\": 34.0522,\n            \"longitude\": -118.2437,\n            \"distance_km\": 3944.42\n        }\n    ]\n}"
-        }
-      ]
-    },
-    {
-      "name": "List Schools - From Chicago",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/listSchools?latitude=41.8781&longitude=-87.6298",
-          "host": ["{{baseUrl}}"],
-          "path": ["listSchools"],
-          "query": [
-            {
-              "key": "latitude",
-              "value": "41.8781",
-              "description": "User's latitude (Chicago, IL)"
-            },
-            {
-              "key": "longitude",
-              "value": "-87.6298",
-              "description": "User's longitude (Chicago, IL)"
-            }
-          ]
-        },
-        "description": "Get schools sorted by distance from Chicago, Illinois"
-      }
-    },
-    {
-      "name": "List Schools - Invalid Parameters",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/listSchools?latitude=invalid&longitude=-87.6298",
+          "raw": "{{baseUrl}}/listSchools?latitude=invalid&longitude=77.2090",
           "host": ["{{baseUrl}}"],
           "path": ["listSchools"],
           "query": [
@@ -276,7 +488,7 @@
             },
             {
               "key": "longitude",
-              "value": "-87.6298"
+              "value": "77.2090"
             }
           ]
         },
@@ -284,12 +496,12 @@
       },
       "response": [
         {
-          "name": "Validation Error",
+          "name": "❌ Validation Error",
           "originalRequest": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/listSchools?latitude=invalid&longitude=-87.6298",
+              "raw": "{{baseUrl}}/listSchools?latitude=invalid&longitude=77.2090",
               "host": ["{{baseUrl}}"],
               "path": ["listSchools"],
               "query": [
@@ -299,7 +511,7 @@
                 },
                 {
                   "key": "longitude",
-                  "value": "-87.6298"
+                  "value": "77.2090"
                 }
               ]
             }
@@ -317,7 +529,7 @@
       ]
     },
     {
-      "name": "List Schools - Missing Parameters",
+      "name": "❌ List Schools - Missing Parameters",
       "request": {
         "method": "GET",
         "header": [],
@@ -330,7 +542,7 @@
       },
       "response": [
         {
-          "name": "Missing Parameters Error",
+          "name": "❌ Missing Parameters Error",
           "originalRequest": {
             "method": "GET",
             "header": [],
@@ -351,6 +563,36 @@
           "body": "{\n    \"success\": false,\n    \"message\": \"User latitude and longitude are required as query parameters\"\n}"
         }
       ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Pre-request script for logging",
+          "console.log('Making request to:', pm.request.url.toString());"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Basic test for successful responses",
+          "if (pm.response.code === 200 || pm.response.code === 201) {",
+          "    const jsonData = pm.response.json();",
+          "    pm.test('Response has success field', () => {",
+          "        pm.expect(jsonData).to.have.property('success');",
+          "    });",
+          "    pm.test('Success is true', () => {",
+          "        pm.expect(jsonData.success).to.be.true;",
+          "    });",
+          "}"
+        ]
+      }
     }
   ]
 }
